@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
@@ -90,7 +91,7 @@ class Property
 
     public function __construct()
     {
-      $this->created_at = new DateTime();
+      $this->created_at = new \DateTime();
     }
 
     public function getId(): ?int
