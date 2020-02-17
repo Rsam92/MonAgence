@@ -5,9 +5,21 @@
 {% block body %}
   <div class="container mt-4">
 
-    <h1>Voir toutes les propriétés</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus eum, cumque fuga cupiditate suscipit sint facilis ullam facere rerum, maiores sequi et, adipisci quia necessitatibus ex praesentium nam illo laudantium?</p>
+    <h1>Toutes les propriétés</h1>
 
+    <div class="row">
+        {% for property in properties %}
+        <div class="col-md-4">
+
+            {% include'property/_property.html.twig' %}
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {{ knp_pagination_render(properties) }}
+    </div>
 
   </div>
 {% endblock %}
