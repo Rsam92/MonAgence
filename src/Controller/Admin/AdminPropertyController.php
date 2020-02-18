@@ -34,7 +34,7 @@ class AdminPropertyController extends AbstractController
     }
 
     /**
-    *@Route("/admin", name="admin.property.index")
+    *@Route("/admin/login", name="admin.property.index")
     */
     public function index()
     {

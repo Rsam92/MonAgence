@@ -3,11 +3,43 @@
 {% block title 'Toutes nos propriétés' %}
 
 {% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(form.minSurface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button class="btn btn-primary">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
   <div class="container mt-4">
 
-    <h1>Voir toutes les propriétés</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus eum, cumque fuga cupiditate suscipit sint facilis ullam facere rerum, maiores sequi et, adipisci quia necessitatibus ex praesentium nam illo laudantium?</p>
+    <h1>Toutes les propriétés</h1>
 
+    <div class="row">
+        {% for property in properties %}
+        <div class="col-md-4">
+
+            {% include'property/_property.html.twig' %}
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {{ knp_pagination_render(properties) }}
+    </div>
 
   </div>
 {% endblock %}
