@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Property;
+use App\Entity\Option;
 use App\Entity\PropertySearch;
 //use App\Form\PropertySearchType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -43,6 +44,18 @@ class PropertyRepository extends ServiceEntityRepository
                 ->andWhere('p.surface >= :minsurface')
                 ->setParameter('minsurface', $search->getMinSurface());
         }
+
+        if($search->getOptions()->count() > 0) {
+            $k = 0;
+            foreach($search->getOptions() as $option) {
+                $k++;
+                $query = $query
+                    ->andWhere(":option$k MEMBER OF p.options")
+                    ->setParameter("option$k", $option);
+            }
+        }
+
+
 
       return $query->getQuery();
 
